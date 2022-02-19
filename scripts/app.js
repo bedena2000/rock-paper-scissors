@@ -55,8 +55,8 @@ function checkSigil() {
   }
 }
 
-function startGame() {
-  const userChoose = userAnswer();
+function startGame(userChoice) {
+  const userChoose = userChoice;
   const computerChoose = computerAnswer();
   const winner = checkWinner(userChoose, computerChoose);
   if(winner === 'user') {
@@ -74,7 +74,12 @@ function startGame() {
     computerWinner();
     checkSigil()
   } else if (winner === 'draw') {
+    if(newGameSigil) {
+      clearFunction();
+      newGameSigil = false;
+    }
     draw();
+    checkSigil()
   }
 }
 function checkWinner(userChoose, computerChoose) {
@@ -119,9 +124,23 @@ function checkWinner(userChoose, computerChoose) {
   return winnerState;
 }
 // Final Logic
-const button = document.querySelector(".start-game");
-button.addEventListener("click", (event) => {
-  startGame();
-});
 
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+
+function getType(event) {
+  const type = event.target.classList[0];
+  if(type === 'rock') {
+    startGame('rock');
+  } else if (type === 'scissors') {
+    startGame('scissors');
+  } else if (type === 'paper') {
+    startGame('paper');
+  }
+}
+
+rock.addEventListener("click", getType);
+paper.addEventListener("click", getType);
+scissors.addEventListener("click", getType);
 
