@@ -1,0 +1,7 @@
+This is rock papers scissors algorithm
+
+1) i need to get input from user
+2) i need to get input from computer (with random number between 1 to 3)
+3) i need a function who get 1) and 2) like arguments and make some logic to give me result of battle
+4) i need to display text on the wall
+
